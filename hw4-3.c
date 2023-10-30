@@ -4,7 +4,7 @@
 
 main()
 {
-    int n=0, s[n+1], d[n+1], car=1, x=0, s1, d1, sf[n+1], df[n+1];
+    int n=0, s[100], d[100], car=1, x=0, s1, d1, sf[100], df[100];
     while (scanf("%d%d", &s[n], &d[n]) != EOF)
     {
         n++;
@@ -17,15 +17,16 @@ main()
             t[j]+=1;
         }
 
-        for (int j = 1; j < 25; j++)
+
+
+    }
+    for (int j = 0; j < 25; j++)
         {
             if (t[j]>car)
                 car=t[j];
         }
-
-    }
     printf("%d ",car);
-
+}
 
     for(int i=0;i< n-1;i++)
     {
@@ -44,14 +45,14 @@ main()
         }
     }
 
-    for(int i=0;i<n ;i++)        //備份
+    for(int i=0;i<n ;i++)
     {
         sf[i]=s[i];
         df[i]=d[i];
     }
 
 
-        for(int i=0; i<car; i++){            //輸出班表
+        for(int i=0; i<car; i++){
         printf("\nDriver %d's schedule is %d %d ",i+1,sf[x],df[x]);
 
             for(int j=0; j<n; j++)
