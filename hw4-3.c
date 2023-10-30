@@ -3,16 +3,15 @@
 
 int main()
 {
-    int i=0,j=0,k=0,x=0,y=1,sum=0,num=0,s[100],d[100],sf[100],df[100],s1,d1,count=0;
-    while(scanf("%d%d",&s[i],&d[i])!=EOF)
+    int i=0,j=0,k=0,x=0,y=1,sum=0,num=0,s[100],d[100],sf[100],df[100],s1,d1,n=0;
+    while(scanf("%d%d",&s[n],&d[n])!=EOF)
     {
-        i++;
-        count++;
+        n++;
     }
 
-    for(i=0;i<count-1;i++)
+    for(i=0;i<n-1;i++)
     {
-        for(int j=0;j<count;j++)
+        for(int j=0;j<n;j++)
         {
             if(s[j]>s[j+1])
             {
@@ -27,7 +26,7 @@ int main()
         }
     }
 
-    for(i=0;i<count;i++)
+    for(i=0;i<n;i++)
     {
         sf[i]=s[i];
         df[i]=d[i];
@@ -35,7 +34,7 @@ int main()
 
     while(y!=0)
     {
-        for(i=0;i<count;i++)
+        for(i=0;i<n;i++)
         {
             sum=0;
 
@@ -46,20 +45,20 @@ int main()
             }
             s[x]=0;
 
-            if(i==count-1)
+            if(i==n-1)
             {
                 num++;
-                for(j=0;j<count;j++)
+                for(j=0;j<n;j++)
                 {
                     if(s[j]!=0)
                     {
                         x=j;
-                        j=count;
+                        j=n;
                     }
                 }
             }
 
-            for(k=0;k<count;k++)
+            for(k=0;k<n;k++)
             sum=sum+s[k];
             if(sum==0)
             y=0;
@@ -73,7 +72,7 @@ int main()
     {
         printf("\nDriver %d's schedule is %d %d ",i+1,sf[x],df[x]);;
 
-        for(j=0;j<count;j++)
+        for(j=0;j<n;j++)
         {
             if(df[x]<=sf[j])
             {
@@ -83,14 +82,14 @@ int main()
             }
             sf[x]=0;
 
-            if(j==count-1)
+            if(j==n-1)
             {
-                for(k=0;k<count;k++)
+                for(k=0;k<n;k++)
                 {
                     if(sf[k]!=0)
                     {
                         x=k;
-                        k=count;
+                        k=n;
                     }
                 }
             }
