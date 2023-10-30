@@ -1,36 +1,18 @@
 #include <stdio.h>
-#include <assert.h>
-#define ARRAYSIZE 50
+#include <stdlib.h>
 
-main()
+int main()
 {
-    int n=0, s[100], d[100], car=1, x=0, s1, d1, sf[100], df[100];
-    while (scanf("%d%d", &s[n], &d[n]) != EOF)
+    int i=0,j=0,k=0,x=0,y=1,sum=0,num=0,s[100],d[100],sf[100],df[100],s1,d1,count=0;
+    while(scanf("%d%d",&s[i],&d[i])!=EOF)
     {
-        n++;
+        i++;
+        count++;
     }
-    int t[25]={0};
-    for (int i = 0; i < n; i++)
+
+    for(i=0;i<count-1;i++)
     {
-        for(int j=s[i]; j < d[i]; j++)
-        {
-            t[j]+=1;
-        }
-
-
-
-    }
-    for (int j = 0; j < 25; j++)
-        {
-            if (t[j]>car)
-                car=t[j];
-        }
-    printf("%d ",car);
-}
-
-    for(int i=0;i< n-1;i++)
-    {
-        for(int j=0;j<n;j++)
+        for(int j=0;j<count;j++)
         {
             if(s[j]>s[j+1])
             {
@@ -45,39 +27,74 @@ main()
         }
     }
 
-    for(int i=0;i<n ;i++)
+    for(i=0;i<count;i++)
     {
         sf[i]=s[i];
         df[i]=d[i];
     }
 
+    while(y!=0)
+    {
+        for(i=0;i<count;i++)
+        {
+            sum=0;
 
-        for(int i=0; i<car; i++){
-        printf("\nDriver %d's schedule is %d %d ",i+1,sf[x],df[x]);
-
-            for(int j=0; j<n; j++)
+            if(d[x]<=s[i])
             {
-                if(df[x]<=sf[j])
-                {
-                    x=j;
-                    printf("%d %d ",sf[j],df[j]);
-                    sf[j]=0;
-                }
-                sf[x]=0;
+                x=i;
+                s[i]=0;
+            }
+            s[x]=0;
 
-                if(j==n-1)
+            if(i==count-1)
+            {
+                num++;
+                for(j=0;j<count;j++)
                 {
-                    for(int k=0;k<n;k++)
+                    if(s[j]!=0)
                     {
-                        if(sf[k]!=0)
-                        {
-                            x=k;
-                            k=n;
-                        }
+                        x=j;
+                        j=count;
+                    }
+                }
+            }
+
+            for(k=0;k<count;k++)
+            sum=sum+s[k];
+            if(sum==0)
+            y=0;
+        }
+    }
+
+    printf("%d",num);
+    x=0;
+
+    for(i=0;i<num;i++)
+    {
+        printf("\nDriver %d's schedule is %d %d ",i+1,sf[x],df[x]);;
+
+        for(j=0;j<count;j++)
+        {
+            if(df[x]<=sf[j])
+            {
+                x=j;
+                printf("%d %d ",sf[j],df[j]);
+                sf[j]=0;
+            }
+            sf[x]=0;
+
+            if(j==count-1)
+            {
+                for(k=0;k<count;k++)
+                {
+                    if(sf[k]!=0)
+                    {
+                        x=k;
+                        k=count;
                     }
                 }
             }
         }
-
-
+    }
+    return 0;
 }
